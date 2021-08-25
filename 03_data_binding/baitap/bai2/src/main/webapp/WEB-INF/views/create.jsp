@@ -15,11 +15,13 @@
 <center><p class="text-danger">Warning: Declaring false information is a violation of Vietnamese law and may be subject
     to criminal handling
 </p></center>
-<h5 class="text-danger"><c:if test="${msg!=null}">
-    ${msg}
-</c:if></h5>
+<h5 class="text-danger">
+    <c:if test="${msg!=null}">
+        ${msg}
+    </c:if>
+</h5>
 <div class="container-fluid col-lg-12">
-    <form:form modelAttribute="health" action="/create" method="post">
+    <form:form modelAttribute="health" action="create" method="post">
         <div class="col-lg-12">
             <label for="inputName" class="form-label">Full name</label>
             <form:input path="name" class="form-control" id="inputName"/>
@@ -122,22 +124,28 @@
                 <form:input path="email" class="form-control" id="email"/>
             </div>
         </div>
-        <div class="col-lg-12">
-            <label for="symptom" class="form-label">If you have any of the followings at present or during the past 14
-                days (until the date of entry/exit/transit)?</label>
-            <form:checkboxes path="symptom" items="${symptomList}" cssClass="form-label" id="symptom"/>
-        </div>
-        <div class="col-lg-12">
-            <label for="exposure" class="form-label">History of exposure: During the last 14 days, did you</label>
-            <form:checkboxes path="exposure" items="${exposureList}" cssClass="form-label" id="exposure"/>
-        </div>
-        <div class="col-lg-12">The data you provide is completely confidential and only serves for the prevention of
-            epidemics, under the management of the Vietnam National Steering Committee for COVID-19 Epidemic Prevention
-            and Control. When you press "Submit", you understand and agree with the above statement.
-        </div>
-        <div class="col-lg-12">
-            <button type="submit" class="btn btn-success" value="Submit">Submit</button>
-        </div>
+        <%--        <div class="col-lg-12">--%>
+        <%--            <label for="symptom" class="form-label">If you have any of the followings at present or during the past 14--%>
+        <%--                days (until the date of entry/exit/transit)?</label>--%>
+        <%--&lt;%&ndash;            <form:checkboxes path="symptom" items="${symptomList}" cssClass="form-label" id="symptom"/>&ndash;%&gt;--%>
+        <%--            <form:checkboxes path="symptom" items="${symptomList}"/>--%>
+        <%--        </div>--%>
+        <%--        <div class="col-lg-12">--%>
+        <%--            <label for="exposure" class="form-label">History of exposure: During the last 14 days, did you</label>--%>
+        <%--            <form:checkboxes path="exposure" items="${exposureList}" cssClass="form-label" id="exposure"/>--%>
+        <%--        </div>--%>
+        <center>
+            <div class="col-lg-12">The data you provide is completely confidential and only serves for the prevention of
+                epidemics, under the management of the Vietnam National Steering Committee for COVID-19 Epidemic
+                Prevention
+                and Control. When you press "Submit", you understand and agree with the above statement.
+            </div>
+        </center>
+        <center>
+            <div class="col-lg-12">
+                <button type="submit" class="btn btn-success" value="Submit">Submit</button>
+            </div>
+        </center>
     </form:form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

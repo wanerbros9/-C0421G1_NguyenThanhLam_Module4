@@ -43,11 +43,10 @@ public class HealthController {
     }
 
     @PostMapping("/create")
-    public String createHealth(@ModelAttribute Health health,
-                               RedirectAttributes redirectAttributes,
-                               Model model) {
+    public String createHealth(@ModelAttribute("health") Health health,
+                               RedirectAttributes redirectAttributes) {
         healthService.save(health);
         redirectAttributes.addFlashAttribute("msg", "Success");
-        return "redirect:/";
+        return "redirect:/create";
     }
 }
