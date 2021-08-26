@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<h3>Product List</h3>
+<p>
+    <a th:href="@{/create}">
+        Add new customer
+    </a>
+</p>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+<p th:if="${products.isEmpty()}" style="color: red">List Empty</p>
+<div th:unless="${products.isEmpty()}">
+    <table class="table" border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Describe</th>
+            <th>Manufacture</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Detail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product,status : ${products}">
+            <td th:text="${product.getId()}"></td>
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+            <td th:text="${product.getDescribe()}"></td>
+            <td th:text="${product.getManufacture()}"></td>
+            <td><a th:href="@{/update/__${product.id}__}">update</a></td>
+            <td><a th:href="@{/delete/__${product.id}__}">delete</a></td>
+            <!--            <td><a th:href="@{/{id}/detail(id=${row.getId()})}"></a>detail</td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -124,16 +124,16 @@
                 <form:input path="email" class="form-control" id="email"/>
             </div>
         </div>
-        <%--        <div class="col-lg-12">--%>
-        <%--            <label for="symptom" class="form-label">If you have any of the followings at present or during the past 14--%>
-        <%--                days (until the date of entry/exit/transit)?</label>--%>
-        <%--&lt;%&ndash;            <form:checkboxes path="symptom" items="${symptomList}" cssClass="form-label" id="symptom"/>&ndash;%&gt;--%>
-        <%--            <form:checkboxes path="symptom" items="${symptomList}"/>--%>
-        <%--        </div>--%>
-        <%--        <div class="col-lg-12">--%>
-        <%--            <label for="exposure" class="form-label">History of exposure: During the last 14 days, did you</label>--%>
-        <%--            <form:checkboxes path="exposure" items="${exposureList}" cssClass="form-label" id="exposure"/>--%>
-        <%--        </div>--%>
+        <div class="col-lg-12">
+            <label for="symptom" class="form-label">If you have any of the followings at present or during the past 14
+                days (until the date of entry/exit/transit)?</label>
+                <%--            <form:checkboxes path="symptom" items="${symptomList}" cssClass="form-label" id="symptom"/>--%>
+            <form:checkboxes path="symptom" items="${symptomList}"/>
+        </div>
+        <div class="col-lg-12">
+            <label for="exposure" class="form-label">History of exposure: During the last 14 days, did you</label>
+            <form:checkboxes path="exposure" items="${exposureList}" cssClass="form-label" id="exposure"/>
+        </div>
         <center>
             <div class="col-lg-12">The data you provide is completely confidential and only serves for the prevention of
                 epidemics, under the management of the Vietnam National Steering Committee for COVID-19 Epidemic

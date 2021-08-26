@@ -47,6 +47,6 @@ public class HealthController {
                                RedirectAttributes redirectAttributes) {
         healthService.save(health);
         redirectAttributes.addFlashAttribute("msg", "Success");
-        return "redirect:/create";
+        return "redirect:/display";
     }
 }
