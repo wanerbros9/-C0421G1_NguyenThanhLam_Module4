@@ -11,9 +11,13 @@
         Add new customer
     </a>
 </p>
+<form th:action="@{/search}" method="post">
+    <input type="text" placeholder="Search" name="name">
+    <input type="submit" th:value="Search">
+</form>
 <div class="notify">
-    <div th:if="${success}">
-        <span th:text="${success}"></span>
+    <div th:if="${msg}">
+        <span th:text="${msg}"></span>
     </div>
 </div>
 <p th:if="${products.isEmpty()}" style="color: red">List Empty</p>
@@ -26,7 +30,7 @@
             <th>Price</th>
             <th>Describe</th>
             <th>Manufacture</th>
-            <th>Edit</th>
+            <th>Update</th>
             <th>Delete</th>
             <th>Detail</th>
         </tr>
@@ -40,7 +44,7 @@
             <td th:text="${product.getManufacture()}"></td>
             <td><a th:href="@{/update/__${product.id}__}">update</a></td>
             <td><a th:href="@{/delete/__${product.id}__}">delete</a></td>
-            <!--            <td><a th:href="@{/{id}/detail(id=${row.getId()})}"></a>detail</td>-->
+            <td><a th:href="@{/view/__${product.id}__}">detail</a></td>
         </tr>
         </tbody>
     </table>

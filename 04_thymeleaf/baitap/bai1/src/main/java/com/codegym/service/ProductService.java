@@ -34,7 +34,12 @@ public class ProductService implements IProductService {
 
     @Override
     public Product findById(int id) {
-        return products.get(id);
+        for (Product product : products) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -51,7 +56,11 @@ public class ProductService implements IProductService {
 
     @Override
     public void remove(int id) {
-        products.remove(id);
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.remove(products.get(i));
+            }
+        }
     }
 
     @Override
