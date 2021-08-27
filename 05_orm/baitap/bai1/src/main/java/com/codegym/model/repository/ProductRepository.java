@@ -41,13 +41,14 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void remove(Product product) {
-        entityManager.remove(product);
+        entityManager.remove(entityManager.merge(product));
     }
 
     @Override
     public Product findByName(String name) {
         TypedQuery<Product> query = entityManager
                 .createQuery("select p from Product as p where p.name=:name", Product.class);
+        query.setParameter("name", name);
         return query.getSingleResult();
     }
 }

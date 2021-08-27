@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+
 @Controller
 public class ProductController {
     @Autowired
@@ -29,7 +30,6 @@ public class ProductController {
 
     @PostMapping("/save")
     public String create(Product product) {
-        product.setId((int) (Math.random() * 10000));
         productService.save(product);
         return "redirect:/index";
     }
@@ -48,9 +48,8 @@ public class ProductController {
     }
 
     @GetMapping("/delete/{id}")
-    public String showDelete(@PathVariable int id, Model model, @ModelAttribute Product product) {
-        product = productService.findById(id);
-        model.addAttribute("product", product);
+    public String showDelete(@PathVariable int id, Model model) {
+        model.addAttribute("product", productService.findById(id));
         return "delete";
     }
 
