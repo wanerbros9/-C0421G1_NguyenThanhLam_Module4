@@ -3,7 +3,6 @@ package com.codegym.model.repository;
 import com.codegym.model.bean.Product;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
