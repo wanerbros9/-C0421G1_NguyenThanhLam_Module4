@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Blog</title>
+</head>
+<body>
+<h3>Blog list</h3>
+<p>
+    <a th:href="@{/create}">
+        Add new blog
+    </a>
+</p>
+<form th:action="@{/search}" method="post">
+    <input type="text" placeholder="Search" name="id">
+    <input type="submit" th:value="Search">
+</form>
+<br>
+<div class="notify">
+    <div th:if="${msg}">
+        <span th:text="${msg}"></span>
+    </div>
+</div>
+<p th:if="${blogs.isEmpty()}" style="color: red">List Empty</p>
+<div th:unless="${blogs.isEmpty()}">
+    <table class="table" border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Ending</th>
+            <th colspan="2">Perform</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="blog,status : ${blogs}">
+            <td th:text="${blog.getId()}"></td>
+            <td><a th:href="@{/detail/__${blog.id}__}" th:text="${blog.getTitle()}"></a></td>
+            <td th:text="${blog.getContent()}"></td>
+            <td th:text="${blog.getEnding()}"></td>
+            <td><a th:href="@{/edit/__${blog.id}__}">Edit</a></td>
+            <td><a th:href="@{/delete/__${blog.id}__}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

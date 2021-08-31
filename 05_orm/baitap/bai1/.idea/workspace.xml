@@ -5,62 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73c4ecd0-827a-45df-a0fa-486a7a1ae3b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/java/com/codegym/Bai1Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/test/java/com/codegym/Bai1ApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/configuration/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/configuration/AppInit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/controller/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/repository/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/repository/ICustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/repository/IGeneralRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/service/ICustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/java/com/codegym/cms/service/IGeneralService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/webapp/WEB-INF/views/customer/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/webapp/WEB-INF/views/customer/delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/webapp/WEB-INF/views/customer/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai1/src/main/webapp/WEB-INF/views/customer/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.idea/jpa-buddy-datasource.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/.jpb/persistence-units.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/src/main/java/com/codegym/cms/configuration/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/thuchanh/bai2/src/main/java/com/codegym/cms/configuration/AppInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/java/com/codegym/controller/BlogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/java/com/codegym/model/bean/Blog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/java/com/codegym/model/repository/IBlogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/java/com/codegym/model/service/BlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/java/com/codegym/model/service/IBlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/resources/templates/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/resources/templates/delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/resources/templates/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/resources/templates/display.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/resources/templates/edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codegym/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/codegym/controller/ProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codegym/model/repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/codegym/model/repository/ProductRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/bai1-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/bai1-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/codegym/model/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/model/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +74,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../06_spring_jpa/baitap/bai1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -250,6 +206,7 @@
       <workItem from="1630318479999" duration="657000" />
       <workItem from="1630319228795" duration="104000" />
       <workItem from="1630332008117" duration="515000" />
+      <workItem from="1630333818160" duration="4356000" />
     </task>
     <servers />
   </component>
