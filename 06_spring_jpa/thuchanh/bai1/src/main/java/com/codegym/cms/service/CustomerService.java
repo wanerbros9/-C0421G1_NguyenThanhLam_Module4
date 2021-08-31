@@ -5,18 +5,19 @@ import com.codegym.cms.repository.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerRepository customerRepository;
 
     @Override
-    public List<Customer> findAll() {
+    public Iterable<Customer> findAll() {
         return customerRepository.findAll();
     }
 
     @Override
-    public Customer findById(Long id) {
+    public Optional<Customer> findById(Long id) {
         return customerRepository.findById(id);
     }
 
@@ -27,6 +28,6 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void remove(Long id) {
-        customerRepository.remove(id);
+        customerRepository.deleteById(id);
     }
 }
