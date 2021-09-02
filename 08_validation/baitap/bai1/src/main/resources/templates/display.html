@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display User</title>
+</head>
+<body>
+<h3>User list</h3>
+<p>
+    <a th:href="@{/create}">
+        Add new user
+    </a>
+</p>
+<div class="notify">
+    <div th:if="${msg}">
+        <span th:text="${msg}"></span>
+    </div>
+</div>
+<p th:if="${users.isEmpty()}" style="color: red">List Empty</p>
+<div th:unless="${users.isEmpty()}">
+    <table class="table" border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Age</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user,status : ${users}">
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getFirstName()}"></td>
+            <td th:text="${user.getLastName()}"></td>
+            <td th:text="${user.getPhoneNumber()}"></td>
+            <td th:text="${user.getAge()}"></td>
+            <td th:text="${user.getEmail()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
