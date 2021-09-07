@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Book</title>
+</head>
+<body>
+<h3>Book list</h3>
+<div class="notify">
+    <div th:if="${msg}">
+        <span th:text="${msg}"></span>
+    </div>
+</div>
+<p th:if="${books.isEmpty()}" style="color: red">List Empty</p>
+<div th:unless="${books.isEmpty()}">
+    <table class="table" border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Content</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book,status : ${books}">
+            <td th:text="${book.getId()}"></td>
+            <td th:text="${book.getName()}"></td>
+            <td th:text="${book.getContent()}"></td>
+            <td th:text="${book.getAmount()}"></td>
+            <td>
+                <a th:href="@{detail/__${book.getId()}__}">Detail</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
