@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Cart</title>
+</head>
+<body>
+<h3>Product Cart</h3>
+<div>
+    <a th:href="@{/shop}">Back to shop</a>
+</div>
+<form action="/cart/checkout" method="post">
+    <table class="table" border="1">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th colspan="3">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="productMap : ${cartDto.productMap}">
+            <td th:text="${productMap.key.name}"></td>
+            <td th:text="${productMap.key.description}"></td>
+            <td th:text="${productMap.key.price}"></td>
+            <td th:text="${productMap.value}"></td>
+            <td>
+                <a th:href="@{/shop/delete/__${productMap.getKey().id}__}" role="button">Remove</a>
+            </td>
+            <td>
+                <a th:href="@{/cart/add/__${productMap.getKey().id}__}" role="button">Increase</a>
+            </td>
+            <td>
+                <a th:href="@{/shop/decrease/__${productMap.getKey().id}__}" role="button">Decrease</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="submit" name="Check out">
+</form>
+<div>
+    <span>Total: </span>
+    <span th:text="${cartDto.totalPayment()}"></span>
+</div>
+</body>
+</html>

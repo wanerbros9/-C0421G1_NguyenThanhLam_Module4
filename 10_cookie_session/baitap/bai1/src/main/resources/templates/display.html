@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Product</title>
+</head>
+<body>
+<h3>Product List</h3>
+<div class="notify">
+    <div th:if="${msg}">
+        <span th:text="${msg}"></span>
+    </div>
+</div>
+<div>
+    <a th:href="@{/shop/create}">
+        Add new product
+    </a>
+</div>
+<p th:if="${products.isEmpty()}" style="color: red">List Empty</p>
+<div th:unless="${products.isEmpty()}">
+    <table class="table" border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product,status : ${products}">
+            <td th:text="${product.getId()}"></td>
+            <td><a th:href="@{/shop/detail/__${product.id}__}" th:text="${product.getName()}"></a></td>
+            <td th:text="${product.getDescription()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+            <td>
+                <a th:href="@{/shop/add/__${product.getId()}__}">Add to cart</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <a th:href="@{/cart}">Cart</a>
+</div>
+</body>
+</html>
