@@ -21,7 +21,7 @@ public class CartController {
     private ProductService productService;
 
     @GetMapping
-    public ModelAndView showCart(@SessionAttribute("cart") CartDto cartDto){
+    public ModelAndView showCart(@SessionAttribute(value = "cart", required = false) CartDto cartDto){
         return new ModelAndView("cart/list","cartDto",cartDto);
     }
 

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +32,11 @@ public class ProductController {
 
 
     @GetMapping({""})
-    public String showProduct(Model model) {
+    public String showProduct(@CookieValue(value = "idProduct", defaultValue = "-1") Long idProduct, Model model) {
+        System.err.println(idProduct);
+        if (idProduct != -1) {
+            model.addAttribute("historyProduct", productService.findById(idProduct).get());
+        }
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
         return "display";
@@ -90,7 +96,11 @@ public class ProductController {
     }
 
     @GetMapping("/detail/{id}")
-    public String showDetail(@PathVariable long id, Model model) {
+    public String showDetail(@PathVariable long id, Model model, HttpServletResponse response) {
+        Cookie cookie = new Cookie("idProduct", id + "");
+        cookie.setMaxAge(60 * 60 * 24);
+        cookie.setPath("/");
+        response.addCookie(cookie);
         model.addAttribute("product", productService.findById(id).get());
         return "detail";
     }
