@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:object="${blog}" action="/home/delete/" method="post">
+    <input type="hidden" th:field="*{id}" id="id" th:value="${blog.getId()}"><br>
+    <label for="name">Title</label>
+    <input type="text" th:field="*{title}" id="name" th:value="${blog.getTitle()}"><br>
+    <label for="price">Content</label>
+    <input type="text" th:field="*{content}" id="price" th:value="${blog.getContent()}"><br>
+    <label for="description">Author</label>
+    <input type="text" th:field="*{author}" id="description" th:value="${blog.getAuthor()}"><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
