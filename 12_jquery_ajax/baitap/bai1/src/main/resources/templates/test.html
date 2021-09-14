@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>Click</button>
+<div style="height: 100px; width: 100px; background-color: green; position: relative"></div>
+<script src="../static/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+            $("div").animate({
+                left: '200px',
+                height: '+=100',
+                width: '+=100'
+            })
+        })
+    })
+</script>
+</body>
+</html>
