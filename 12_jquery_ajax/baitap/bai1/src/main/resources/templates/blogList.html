@@ -21,6 +21,7 @@
             <th>Content</th>
             <th>Signature</th>
             <th>Category</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -44,6 +45,7 @@
                         tr.push('<td>' + data[i].content + '</td>');
                         tr.push('<td>' + data[i].signature + '</td>');
                         tr.push('<td>' + data[i].category.categoryName + '</td>');
+                        tr.push(`<td><a href="${data[i].id}" class="detail">Detail</a></td>`);
                         tr.push('</tr>')
                     }
                     $('table').append($(tr.join('')));
@@ -58,6 +60,30 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
+                        let tr = [];
+                        for (let i = 0; i < data.length; i++) {
+                            tr.push('<tr>');
+                            tr.push('<td>' + data[i].id + '</td>');
+                            tr.push('<td>' + data[i].title + '</td>');
+                            tr.push('<td>' + data[i].content + '</td>');
+                            tr.push('<td>' + data[i].signature + '</td>');
+                            tr.push('<td>' + data[i].category.categoryName + '</td>');
+                            tr.push('</tr>')
+                        }
+                        $('table').append($(tr.join('')));
+                    }
+                })
+            })
+
+            $(".detail").click(function () {
+                let value = $(this).attr("href");
+                $("table").empty();
+                $.ajax({
+                    url: "http://localhost:8080/blog/api/" + value,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
                         let tr = [];
                         for (let i = 0; i < data.length; i++) {
                             tr.push('<tr>');
