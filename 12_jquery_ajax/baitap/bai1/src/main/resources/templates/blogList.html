@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale-1, shrink-to-fit=no">
     <title>Title</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
 </head>
 <body>
 <div class="container">
@@ -28,8 +28,8 @@
         </tbody>
     </table>
     <script src="../static/jquery-3.5.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
             $.ajax({
@@ -45,7 +45,10 @@
                         tr.push('<td>' + data[i].content + '</td>');
                         tr.push('<td>' + data[i].signature + '</td>');
                         tr.push('<td>' + data[i].category.categoryName + '</td>');
-                        tr.push(`<td><a href="${data[i].id}" class="detail">Detail</a></td>`);
+                        // tr.push(`<td><a href="${data[i].id}" class="detail">Detail</a></td>`);
+                        tr.push(`<td><button type="button" class="btn btn-primary" id="detail" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Detail
+</button></td>`);
                         tr.push('</tr>')
                     }
                     $('table').append($(tr.join('')));
@@ -77,29 +80,65 @@
 
             $(".detail").click(function () {
                 let value = $(this).attr("href");
-                $("table").empty();
                 $.ajax({
                     url: "http://localhost:8080/blog/api/" + value,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
                         console.log(data);
-                        let tr = [];
-                        for (let i = 0; i < data.length; i++) {
-                            tr.push('<tr>');
-                            tr.push('<td>' + data[i].id + '</td>');
-                            tr.push('<td>' + data[i].title + '</td>');
-                            tr.push('<td>' + data[i].content + '</td>');
-                            tr.push('<td>' + data[i].signature + '</td>');
-                            tr.push('<td>' + data[i].category.categoryName + '</td>');
-                            tr.push('</tr>')
+                        let str = "";
+                        document.getElementById("detailId").value = data.id;
+                        document.getElementById("detailTitle").value = data.title;
+                        document.getElementById("detailContent").value = data.content;
+                        document.getElementById("detailSignature").value = data.signature;
+                        for (let i = 0; i < data.category.length; i++) {
+                            str += data.category[i].categoryName + "";
                         }
-                        $('table').append($(tr.join('')));
+                        document.getElementById("detailCategoryName").value = str;
                     }
                 })
+                event.preventDefault();
             })
         })
     </script>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Id</label>
+                    <input type="text" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <input type="text" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="" id="detail" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Signature</label>
+                    <input type="text" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Category Name</label>
+                    <input type="text" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
