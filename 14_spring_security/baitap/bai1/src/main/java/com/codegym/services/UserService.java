@@ -1,6 +1,6 @@
 package com.codegym.services;
 
-import com.codegym.model.User;
+import com.codegym.model.user.User;
 
 import java.util.List;
 

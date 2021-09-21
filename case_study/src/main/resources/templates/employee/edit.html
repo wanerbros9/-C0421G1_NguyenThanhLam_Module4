@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="/layout/header :: header"></div>
+<div th:replace="/layout/header :: navbar"></div>
+<div class="container-fluid" style="padding-bottom: 10px">
+    <div class="row">
+        <div class="col-lg-12">
+            <form th:action="@{/employee/edit}" th:object="${employeeDto}" method="post" style="width: 80%">
+                <legend align="center">Edit Employee</legend>
+<!--                <input type="hidden" th:field="*{getEmployeeId()}">-->
+                <div class="mb-3" hidden>
+                    <label for="employeeId" class="form-label">Employee Name</label>
+                    <input type="text" name="employeeId" class="form-control" id="employeeId"
+                           th:field="*{employeeId}"/>
+                    <p style="color: red" th:if="${#fields.hasErrors('employeeId')}" th:errors="*{employeeId}"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeName" class="form-label">Employee Name</label>
+                    <input type="text" name="employeeName" class="form-control" id="employeeName"
+                           th:field="*{employeeName}"/>
+                    <p style="color: red" th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="position">Position</label>
+                    <select th:field="*{position}" name="position" class="form-select" id="position">
+                        <option value="">Select Position</option>
+                        <option th:each="position,status : ${positions}"
+                                th:text="${position.getPositionName()}" th:value="${position.getPositionId()}">
+                        </option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="educationDegree">Education Degree</label>
+                    <select th:field="*{educationDegree}" name="educationDegree" class="form-select"
+                            id="educationDegree">
+                        <option value="">Select Education Degree</option>
+                        <option th:each="educationDegree,status : ${educationDegrees}"
+                                th:text="${educationDegree.getEducationDegreeName()}"
+                                th:value="${educationDegree.getEducationDegreeId()}">
+                        </option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="division">Division</label>
+                    <select th:field="*{division}" name="division" class="form-select" id="division">
+                        <option value="">Select Division</option>
+                        <option th:each="division,status : ${divisions}"
+                                th:text="${division.getDivisionName()}" th:value="${division.getDivisionId()}">
+                        </option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeBirthday" class="form-label">Employee Birthday</label>
+                    <input type="date" name="employeeBirthday" class="form-control" id="employeeBirthday"
+                           th:field="*{employeeBirthday}">
+                    <p style="color: red" th:if="${#fields.hasErrors('employeeBirthday')}"
+                       th:errors="*{employeeBirthday}"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeIdCard" class="form-label">Employee Id Card</label>
+                    <input type="text" name="employeeIdCard" class="form-control" id="employeeIdCard"
+                           th:field="*{employeeIdCard}">
+                    <p style="color: red" th:if="${#fields.hasErrors('employeeIdCard')}"
+                       th:errors="*{employeeIdCard}"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeSalary" class="form-label">Employee Salary</label>
+                    <input type="text" name="employeeSalary" class="form-control" id="employeeSalary"
+                           th:field="*{employeeSalary}">
+                    <p style="color: red" th:if="${#fields.hasErrors('employeeSalary')}"
+                       th:errors="*{employeeSalary}"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="employeePhone" class="form-label">Employee Phone</label>
+                    <input type="text" name="employeePhone" class="form-control" id="employeePhone"
+                           th:field="*{employeePhone}">
+                    <p style="color: red" th:if="${#fields.hasErrors('employeePhone')}"
+                       th:errors="*{employeePhone}"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeEmail" class="form-label">Employee Email</label>
+                    <input type="email" name="employeeEmail" class="form-control" id="employeeEmail"
+                           th:field="*{employeeEmail}">
+                    <p style="color: red" th:if="${#fields.hasErrors('employeeEmail')}"
+                       th:errors="*{employeeEmail}"></p>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeAddress" class="form-label">Employee Address</label>
+                    <input type="text" name="employeeAddress" class="form-control" id="employeeAddress"
+                           th:field="*{employeeAddress}">
+                    <p style="color: red" th:if="${#fields.hasErrors('employeeAddress')}"
+                       th:errors="*{employeeAddress}"></p>
+                </div>
+                <button type="submit" class="btn btn-primary">Edit Employee</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="/layout/footer :: footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+</html>
