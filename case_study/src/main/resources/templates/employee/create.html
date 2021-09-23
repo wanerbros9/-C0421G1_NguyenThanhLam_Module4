@@ -11,8 +11,9 @@
 <div th:replace="/layout/header :: navbar"></div>
 <div class="container-fluid" style="padding-bottom: 10px">
     <div class="row">
-        <div class="col-lg-12">
-            <form th:action="@{/employee/create}" th:object="${employeeDto}" method="post" style="width: 80%">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form th:action="@{/employee/create}" th:object="${employeeDto}" method="post">
                 <legend align="center">Create Employee</legend>
                 <div class="mb-3">
                     <label for="employeeName" class="form-label">Employee Name</label>
@@ -22,7 +23,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="position">Position</label>
-                    <select th:field="*{position}" name="position" class="form-select" id="position">
+                    <select th:field="*{position}" name="position" class="form-select" id="position" required>
                         <option value="">Select Position</option>
                         <option th:each="position,status : ${positions}"
                                 th:text="${position.getPositionName()}" th:value="${position.getPositionId()}">
@@ -31,7 +32,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="educationDegree">Education Degree</label>
-                    <select th:field="*{educationDegree}" name="educationDegree" class="form-select"
+                    <select th:field="*{educationDegree}" name="educationDegree" class="form-select" required
                             id="educationDegree">
                         <option value="">Select Education Degree</option>
                         <option th:each="educationDegree,status : ${educationDegrees}"
@@ -42,7 +43,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="division">Division</label>
-                    <select th:field="*{division}" name="division" class="form-select" id="division">
+                    <select th:field="*{division}" name="division" class="form-select" id="division" required>
                         <option value="">Select Division</option>
                         <option th:each="division,status : ${divisions}"
                                 th:text="${division.getDivisionName()}" th:value="${division.getDivisionId()}">
@@ -94,6 +95,7 @@
                 <button type="submit" class="btn btn-primary">Create Employee</button>
             </form>
         </div>
+        <div class="col-lg-3"></div>
     </div>
 </div>
 <div th:replace="/layout/footer :: footer"></div>

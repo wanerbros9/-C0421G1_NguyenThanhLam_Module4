@@ -37,28 +37,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .formLogin()
                 .loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
                 /*Login thanh cong se chuyen huong ve URL man hinh hien tai,
                 neu truy cap truc tiep /login thi login thanh cong se chuyen huong ve /student */
-                    .defaultSuccessUrl("/home").permitAll()
+                .defaultSuccessUrl("/home").permitAll();
+        http.authorizeRequests().antMatchers("/home").permitAll()
                 .and()
-                    .authorizeRequests().antMatchers("/home").permitAll()
-                    .antMatchers("/employee/list").hasAnyRole("CUSTOMER","ADMIN","EMPLOYEE")
-                    .antMatchers("/employee**").hasAnyRole("ADMIN,EMPLOYEE")
-                    .antMatchers("/customer**").hasAnyRole("ADMIN,EMPLOYEE")
-                    .antMatchers("/service**").hasAnyRole("ADMIN,EMPLOYEE")
-                    .antMatchers("/contract**").hasAnyRole("ADMIN,EMPLOYEE")
-                /* Tất cả request gởi lên server đều phải thực hiện xác thực*/
-                .anyRequest().authenticated();
+                .authorizeRequests().antMatchers("/employee/list", "/service/list").hasAnyRole("CUSTOMER","ADMIN")
+                .and()
+                .authorizeRequests().antMatchers("/employee/**", "/customer/**", "/service/**", "/contract/**").hasRole("ADMIN")
+                .and()
+                .exceptionHandling().accessDeniedPage("/notice")
+                .and()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/home");
+//                .anyRequest().authenticated();
+
         /* Tất cả request gởi lên server không cần thực hiện xác thực*/
 //                .authorizeRequests().anyRequest().permitAll();
 
         //Cau hinh remember me
         http.authorizeRequests().and().rememberMe()
-                .tokenRepository(this.persistentTokenRepository()).tokenValiditySeconds(60*60*5);
+                .tokenRepository(this.persistentTokenRepository()).tokenValiditySeconds(60 * 60 * 5);
     }
-    
+
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         InMemoryTokenRepositoryImpl memoryTokenRepository = new InMemoryTokenRepositoryImpl();

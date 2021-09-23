@@ -9,13 +9,13 @@
 <body>
 <div th:fragment="header">
     <div class="container-fluid">
-        <div class="row" style="padding-top: 12px; padding-bottom: 10px">
-            <div class="col-lg-4" style="padding-left: 350px">
+        <div class="row" style="padding-top: 12px; padding-bottom: 15px">
+            <div class="col-lg-4" style="font-family: 'Segoe UI'" align="center">
                 <a href="/home">
                     <img src="/images/logo.png" height="100" width="63"/>
                 </a>
             </div>
-            <div class="col-lg-5" style="font-size: 13px">
+            <div class="col-lg-5" style="font-size: 13px; font-family: 'Segoe UI'">
                 <p>
                     <svg style="color: darkolivegreen" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                          fill="currentColor"
@@ -28,7 +28,7 @@
                     <span style="color: darkolivegreen">7.0 km</span> từ Sân bay Quốc tế Đà Nẵng
                 </p>
             </div>
-            <div class="col-lg-3" style="font-size: 13px">
+            <div class="col-lg-3" style="font-size: 13px; font-family: 'Segoe UI'">
                 <p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-telephone-fill" viewBox="0 0 16 16" style="color: darkolivegreen">
@@ -43,6 +43,20 @@
                         <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
                     </svg>
                     Email: reservation@furamavietnam.com
+                </p>
+                <p>
+                    <svg style="color: darkolivegreen" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                         fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
+                    <span th:if="${#request.userPrincipal}!=null"> Welcome :
+                        <span th:utext="${#request.userPrincipal.name}" style="color: red"></span>
+                    </span></br>
+                    <a th:if="${#request.userPrincipal}!=null" th:href="@{/logout}">
+                        <button class="btn btn-warning btn-sm">
+                            <span>Logout</span>
+                        </button>
+                    </a>
                 </p>
             </div>
         </div>
@@ -72,10 +86,6 @@
                         <a class="nav-link" href="/contract/list">Contract</a>
                     </li>
                 </ul>
-<!--                <form class="d-flex" method="post" action="/customer/search">-->
-<!--                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                    <button class="btn btn-outline-light" type="submit">Search</button>-->
-<!--                </form>-->
             </div>
         </div>
     </nav>

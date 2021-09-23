@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Employee List</title>
@@ -8,8 +9,8 @@
 </head>
 <body>
 <div th:replace="/layout/header :: header"></div>
-<div th:replace="/layout/header :: nav"></div>
-<div class="container-fluid" style="margin-bottom: 100px">
+<div th:replace="/layout/header :: navbar"></div>
+<div class="container-fluid" style="padding-bottom: 100px; padding-top: 30px">
     <div class="row">
         <div class="col-lg-4">
             <h3>
@@ -36,7 +37,7 @@
             <table class="table">
                 <thead>
                 <tr align="center">
-                    <th scope="col">Id</th>
+                    <th scope="col">STT</th>
                     <th scope="col">Name</th>
                     <th scope="col">Birth Day</th>
                     <th scope="col">Id Card</th>
@@ -47,12 +48,12 @@
                     <th scope="col">Position</th>
                     <th scope="col">Education Degree</th>
                     <th scope="col">Division</th>
-                    <th scope="col" colspan="2">Action</th>
+                    <th scope="col" colspan="2" sec:authorize="hasRole('ADMIN')">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="employee,status : ${employees}" align="center">
-                    <td th:text="${employee.getEmployeeId()}"></td>
+                    <td th:text="${status.count}"></td>
                     <td th:text="${employee.getEmployeeName()}"></td>
                     <td th:text="${employee.getEmployeeBirthday()}"></td>
                     <td th:text="${employee.getEmployeeIdCard()}"></td>
@@ -63,24 +64,81 @@
                     <td th:text="${employee.getPosition().getPositionName()}"></td>
                     <td th:text="${employee.getEducationDegree().getEducationDegreeName()}"></td>
                     <td th:text="${employee.getDivision().getDivisionName()}"></td>
-                    <td><a class="btn btn-warning" th:href="@{/employee/edit/__${employee.getEmployeeId()}__}">Edit</a>
+                    <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-warning"
+                                                            th:href="@{/employee/edit/__${employee.getEmployeeId()}__}">Edit</a>
                     </td>
-                    <td><a class="btn btn-danger"
-                           th:href="@{/employee/delete/__${employee.getEmployeeId()}__}">Delete</a></td>
+                    <td sec:authorize="hasRole('ADMIN')">
+                        <button type="button" data-bs-toggle="modal"
+                                class="btn btn-danger" data-bs-target="#exampleModal"
+                                th:onclick="'deleteById('+${employee.getEmployeeId()}+')'">Delete
+                        </button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" sec:authorize="hasRole('ADMIN')">
             <a class="btn bg-success" style="color: white" th:href="@{/employee/create}">
                 Add new employee
             </a>
         </div>
     </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" th:href="@{'/employee'(page=${employees.number - 1})}"
+                   th:if="${employees.hasPrevious()}" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="@{'/employee'(page=${employees.number + 1})}"
+                   th:if="${employees.hasNext()}">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div align="center">
+            <span th:text="${employees.number + 1}"></span>/<span th:text="${employees.totalPages}"></span>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Employee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete ?
+            </div>
+            <form method="post" action="/employee/delete">
+                <div class="modal-footer">
+                    <input type="hidden" name="id" id="employeeId">
+                    <input type="hidden" name="action" value="delete">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <div th:replace="/layout/footer :: footer"></div>
+<script>
+    function deleteById(id) {
+        document.getElementById("employeeId").value = id;
+        document.getElementById("employeeName").value = name;
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>

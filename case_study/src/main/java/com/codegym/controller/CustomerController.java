@@ -96,10 +96,12 @@ public class CustomerController {
 
     @PostMapping("/search")
     public String list(Model model,
-                           @PageableDefault(value = 5) Pageable pageable,
-                           @RequestParam (value = "name") String name) {
-        Page<Customer> customers = customerService.findCustomerByCustomerName(name,pageable);
+                       @PageableDefault(value = 5) Pageable pageable,
+                       @RequestParam(value = "name") String name) {
+        Page<Customer> customers = customerService.findCustomerByCustomerName(name, pageable);
+//        Page<Customer> customers1 = customerService.findCustomerByCustomerNameContaining(name, pageable);
         model.addAttribute("customers", customers);
+//        model.addAttribute("customers1", customers1);
         return "/customer/list";
     }
 

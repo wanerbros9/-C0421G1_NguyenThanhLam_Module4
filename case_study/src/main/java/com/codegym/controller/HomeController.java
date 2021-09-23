@@ -15,4 +15,9 @@ public class HomeController {
     public String showLogin(){
         return "login";
     }
+
+    @GetMapping("/notice")
+    public String showNotice(){
+        return "notice";
+    }
 }

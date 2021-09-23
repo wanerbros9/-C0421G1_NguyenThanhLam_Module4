@@ -11,8 +11,9 @@
 <div th:replace="/layout/header :: navbar"></div>
 <div class="container-fluid" style="padding-bottom: 10px">
     <div class="row">
-        <div class="col-lg-12">
-            <form th:action="@{/customer/create}" th:object="${customerDto}" method="post" style="width: 80%">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form th:action="@{/customer/create}" th:object="${customerDto}" method="post">
                 <legend align="center">Create Customer</legend>
                 <div class="mb-3">
                     <label for="customerName" class="form-label">Customer Name</label>
@@ -28,7 +29,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="customerType">Customer Type</label>
-                    <select th:field="*{customerType}" name="customerType" class="form-select" id="customerType">
+                    <select th:field="*{customerType}" name="customerType" class="form-select" id="customerType" required>
                         <option value="">Select Customer Type</option>
                         <option th:each="customerType,status : ${customerTypes}"
                                 th:text="${customerType.getCustomerTypeName()}"
@@ -45,7 +46,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="customerGender">Customer Gender</label>
-                    <select th:field="*{customerGender}" name="customerGender" class="form-select" id="customerGender">
+                    <select th:field="*{customerGender}" name="customerGender" class="form-select" id="customerGender" required>
                         <option th:value="${null}" readonly>Select Gender</option>
                         <option th:value="${false}" th:text="Male"></option>
                         <option th:value="${true}" th:text="Female"></option>
@@ -82,6 +83,7 @@
                 <button type="submit" class="btn btn-primary">Create Customer</button>
             </form>
         </div>
+        <div class="col-lg-3"></div>
     </div>
 </div>
 <div th:replace="/layout/footer :: footer"></div>
