@@ -17,7 +17,5 @@ public interface ICustomerService {
 
     Customer findById(int id);
 
-    Page<Customer> findCustomerByCustomerName (String name, Pageable pageable);
-
     Page<Customer> findCustomerByCustomerNameContaining (String name, Pageable pageable);
 }

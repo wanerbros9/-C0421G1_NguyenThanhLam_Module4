@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/customer")
@@ -32,9 +33,11 @@ public class CustomerController {
     private ICustomerTypeService customerTypeService;
 
     @GetMapping({"", "/list"})
-    public String showList(Model model, @PageableDefault(value = 5) Pageable pageable) {
-        Page<Customer> customers = customerService.findAll(pageable);
+    public String showList(Model model, @PageableDefault(value = 5) Pageable pageable,
+                           @RequestParam(value = "name") Optional<String> name) {
+        Page<Customer> customers = customerService.findCustomerByCustomerNameContaining(name.orElse(""), pageable);
         model.addAttribute("customers", customers);
+        model.addAttribute("name", name.orElse(""));
         return "/customer/list";
     }
 
@@ -94,17 +97,16 @@ public class CustomerController {
         return "redirect:/customer/list";
     }
 
-    @PostMapping("/search")
-    public String list(Model model,
-                       @PageableDefault(value = 5) Pageable pageable,
-                       @RequestParam(value = "name") String name) {
-        Page<Customer> customers = customerService.findCustomerByCustomerName(name, pageable);
-//        Page<Customer> customers1 = customerService.findCustomerByCustomerNameContaining(name, pageable);
-        model.addAttribute("customers", customers);
-//        model.addAttribute("customers1", customers1);
-        return "/customer/list";
-    }
-
+    //    @GetMapping("/search")
+//    public String showList(Model model,
+//                       @PageableDefault(value = 5) Pageable pageable,
+//                       @RequestParam(value = "name") String name) {
+//        Page<Customer> customers = customerService.findCustomerByCustomerNameContaining(name, pageable);
+//        model.addAttribute("customers", customers);
+//        model.addAttribute("name", name);
+//        return "/customer/list";
+//    }
+//
     private void initCreateCustomer(Model model) {
         model.addAttribute("customerTypes", customerTypeService.findAll());
     }

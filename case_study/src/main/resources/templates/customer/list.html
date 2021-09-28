@@ -25,9 +25,9 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <form class="d-flex" method="post" action="/customer/search">
+            <form class="d-flex" th:action="@{/customer/list}">
                 <input class="form-control me-2" style="width: 50%" type="text" placeholder="Search" aria-label="Search"
-                       name="name">
+                       name="name" th:value="${name}">
                 <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
         </div>
@@ -86,11 +86,11 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
-                        <a class="page-link" th:href="@{'/customer'(page=${customers.number - 1})}"
+                        <a class="page-link" th:href="@{'/customer'(page=${customers.number - 1},name=${name})}"
                            th:if="${customers.hasPrevious()}" tabindex="-1" aria-disabled="true">Previous</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" th:href="@{'/customer'(page=${customers.number + 1})}"
+                        <a class="page-link" th:href="@{'/customer'(page=${customers.number + 1},name=${name})}"
                            th:if="${customers.hasNext()}">Next</a>
                     </li>
                 </ul>
